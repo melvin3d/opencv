@@ -384,12 +384,12 @@ def main():
 
     display_image("image.jpg")
     # display_image("image1.jpg")
-    # set_image_grayscale("image1.jpg", True)
+    # set_image_grayscale("image.jpg", True)
     # resize_image("image.jpg", 100, 100, True)
     # resize_by_multiplier("image.jpg", 2.0, True)
     # flip_image("image.jpg", -1, True)
 
-    # Save image.
+    # # Save image.
     # flipped_image = flip_image("image.jpg", -1)
     # save_image("image_flipped.jpg", flipped_image)
     # # display_image("image_flipped.jpg")
