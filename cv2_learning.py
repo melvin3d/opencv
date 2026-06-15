@@ -6,12 +6,27 @@ import numpy as np
 
 
 def display_image(image_path: str, display_img: bool = True) -> bool:
-    """A function that opens an image."""
+    """A function that opens an image.
 
+    Args:
+        image_path (str): The path to the image.
+        display_img (bool, optional): Whether to display the image. Defaults to True.
+    Returns:
+        bool: True if the image is opened successfully, False otherwise.
+    Example:
+        >>> display_image("image.jpg")
+        True
+        >>> display_image("image.jpg", True)
+        True
+        >>> display_image("image.jpg", False)
+        True
+    """
+
+    window_name = "myImage"
     if pathlib.Path(image_path).exists():
         img = cv2.imread(image_path)
         if display_img:
-            cv2.imshow("myImage", img)
+            cv2.imshow(window_name, img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
     return True
@@ -232,6 +247,136 @@ def change_rgb_intercatively(image_path: str) -> cv2.Mat:
             break
     cv2.destroyAllWindows()
     return image
+
+
+def read_img(img: str, win_name: str = "testWindow") -> bool:
+    """Reads given image
+
+    Args:
+        img (str): Path to the image.
+        win_name (str, optional): Name for the cv2 window. Defaults to "testWindow".
+    Returns:
+        bool: Success|Fail.
+    Example:
+        >>> read_img("image.jpg")
+        True
+        >>> read_img("image.jpg", "testWindow")
+        True
+        >>> read_img("image.jpg", "testWindow", True)
+        True
+        >>> read_img("image.jpg", "testWindow", False)
+        True
+        >>> read_img("image.jpg", "testWindow", True)
+    """
+
+    image = cv2.imread(img)  # Returns numpy.ndarray type object.
+    cv2.imshow(win_name, image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    return True
+
+
+def write_img(img: str, path: str) -> bool:
+    """Writes an image into a file.
+
+    Args:
+        img (str): Path to a image to load.
+        path (str): Path to save teh image..
+    Returns:
+        bool: Success|Fail.
+    Example:
+        >>> write_img("image.jpg", "image_saved.jpg")
+        True
+        >>> write_img("image.jpg", "image_saved.jpg", True)
+        True
+        >>> write_img("image.jpg", "image_saved.jpg", False)
+        True
+        >>> write_img("image.jpg", "image_saved.jpg", True)
+    """
+
+    image = cv2.imread(filename=img)
+    if image is None:
+        print("Could not read the image.")
+        return False
+    return cv2.imwrite(path, img=image)
+    return True
+
+
+def get_image_size(img: str) -> tuple[int, int]:
+    """Returns the size of the image.
+
+    Args:
+        img (str): Path to a image to load.
+    Returns:
+        tuple[int, int]: Height and width of the image.
+    Example:
+        >>> get_image_size("image.jpg")
+        (512, 512)
+        >>> get_image_size("image.jpg", True)
+        (512, 512)
+        >>> get_image_size("image.jpg", False)
+        (512, 512)
+        >>> get_image_size("image.jpg", True)
+        (512, 512)
+        (512, 512)
+    """
+
+    image = cv2.imread(filename=img)
+    height, width = image.shape[:2]
+    print(f"Height: {height}, Width: {width}")
+    return height, width
+
+
+def get_rgb_values(img: str) -> tuple[int, int, int]:
+    """Returns the RGB values of the image.
+
+    Args:
+        img (str): Path to a image to load.
+    Returns:
+        tuple[int, int, int]: RGB values of the image.
+    Example:
+        >>> get_rgb_values("image.jpg")
+        (255, 255, 255)
+        >>> get_rgb_values("image.jpg", True)
+        (255, 255, 255)
+        >>> get_rgb_values("image.jpg", False)
+        (255, 255, 255)
+        >>> get_rgb_values("image.jpg", True)
+        (255, 255, 255)
+        (255, 255, 255)
+    """
+
+    image = cv2.imread(filename=img)
+    rgb_values = image[100, 100]
+    print(f"RGB Values: {rgb_values}")
+    return rgb_values
+
+
+def get_color_channels(img: str, channel: str = "blue") -> int:
+    """Returns the color channels of the image.
+
+    Args:
+        img (str): Path to a image to load.
+        channel (str, optional): Channel to get. Defaults to "blue".
+    Returns:
+        int: Value of the color channel.
+    Example:
+        >>> get_color_channels("image.jpg", "blue")
+        255
+        >>> get_color_channels("image.jpg", "green")
+        255
+        >>> get_color_channels("image.jpg", "red")
+        255
+        >>> get_color_channels("image.jpg", "blue", True)
+        255
+        >>> get_color_channels("image.jpg", "green", True)
+        255
+    """
+
+    image = cv2.imread(filename=img)
+    color_value = image[100, 100, {"blue": 0, "green": 1, "red": 2}[channel]]
+    print(f"Color Channel: {channel}, Value: {color_value}")
+    return color_value
 
 
 def main():
