@@ -6,9 +6,8 @@ import cv2_learning
 
 def test_package_info():
     """Shows package versions of the nympy and cv libs."""
-    print("OpenCv: ", cv2_learning.CV2_VER)
-    print("Numpy: ", cv2_learning.NP_VER)
-    print("MatPlotLib: ", cv2_learning.MATPLOTLIB_VER)
+    print("OpenCv: ", cv2_learning.cv2.__version__)
+    print("Numpy: ", cv2_learning.np.__version__)
 
 
 def test_read_img():
