@@ -21,7 +21,7 @@ def set_image_grayscale(image_path: str, show_img: bool = False) -> cv2.Mat:
     """A function that sets an image to grayscale.
 
     Args:
-        image_path: The path to the image.
+        image_path: The path to the image.j
         show_img: Whether to show the image.
     Returns:
         The image in grayscale.
@@ -238,11 +238,11 @@ def main():
     """The main function."""
 
     display_image("image.jpg")
-    display_image("image1.jpg")
-    # set_image_grayscale("image1.jpg")
-    # resize_image("image.jpg", 100, 100)
-    # resize_by_multiplier("image.jpg", 0.5)
-    # flip_image("image.jpg", -1)
+    # display_image("image1.jpg")
+    # set_image_grayscale("image1.jpg", True)
+    # resize_image("image.jpg", 100, 100, True)
+    # resize_by_multiplier("image.jpg", 2.0, True)
+    # flip_image("image.jpg", -1, True)
 
     # Save image.
     # flipped_image = flip_image("image.jpg", -1)
