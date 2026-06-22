@@ -1,19 +1,21 @@
 """Tests for the module name cv2_learning."""
 
+import cv2
+import numpy as np
 import pprint
-import cv2_learning
+import cv2_learn
 
 
 def test_package_info():
     """Shows package versions of the nympy and cv libs."""
-    print("OpenCv: ", cv2_learning.cv2.__version__)
-    print("Numpy: ", cv2_learning.np.__version__)
+    print("OpenCv: ", cv2.__version__)
+    print("Numpy: ", np.__version__)
 
 
 def test_read_img():
     """Reads and shows an image."""
 
-    expected = cv2_learning.read_img("testWriteImg.jpg")
+    expected = cv2_learn.read_img("testWriteImg.jpg")
     pprint.pprint(expected)
     assert expected is True, "Something went wrong."
 
@@ -21,8 +23,8 @@ def test_read_img():
 def test_write_img():
     """docstring"""
 
-    expected = cv2_learning.write_img("saveImage1.jpg", "testWriteImg.jpg")
-    print(expected)
+    expected = cv2_learn.write_img("saveImage1.jpg", "testWriteImg.jpg")
+    pprint.pprint(expected)
     assert expected is True, "Saving image went wrong."
 
 
